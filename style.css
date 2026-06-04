@@ -1,0 +1,170 @@
+:root {
+  --bg: #0f1724;
+  --panel: #131d2c;
+  --panel-soft: #182737;
+  --text: #f8fbff;
+  --muted: #8aa1b3;
+  --accent: #53c6ff;
+  --accent-strong: #3c97d4;
+  --danger: #ff6b6b;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #1b2b40 0%, #07101f 60%);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.app-shell {
+  width: min(100%, 520px);
+}
+
+.stopwatch-card {
+  background: linear-gradient(180deg, rgba(17, 29, 44, 0.98), rgba(9, 16, 28, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 32px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.title-bar {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.title-bar h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  letter-spacing: 0.06em;
+}
+
+.title-bar p {
+  margin: 0.65rem auto 0;
+  color: var(--muted);
+  max-width: 360px;
+  line-height: 1.6;
+}
+
+.display-panel {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 28px;
+  padding: 1.5rem 1.3rem;
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: 0.05em;
+  margin-bottom: 1.75rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.control-row,
+.lap-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.control-row .control-button,
+.lap-row .control-button {
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  padding: 0.95rem 1rem;
+  cursor: pointer;
+  transition: transform 150ms ease, background 150ms ease, box-shadow 150ms ease;
+}
+
+.control-button {
+  background: linear-gradient(180deg, rgba(83, 198, 255, 0.15), rgba(83, 198, 255, 0.08));
+  color: var(--text);
+  box-shadow: 0 14px 30px rgba(15, 22, 34, 0.24);
+}
+
+.control-button.secondary {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.control-button.tertiary {
+  background: rgba(255, 107, 107, 0.16);
+  color: #ffd7d7;
+}
+
+.control-button.wide {
+  grid-column: span 3;
+}
+
+.control-button:hover,
+.control-button:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(83, 198, 255, 0.2);
+}
+
+.control-button:active {
+  transform: translateY(0);
+}
+
+.lap-list-panel {
+  margin-top: 1rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 1rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.lap-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+}
+
+.lap-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.lap-list li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lap-list li:nth-child(odd) {
+  background: rgba(83, 198, 255, 0.06);
+}
+
+@media (max-width: 460px) {
+  .stopwatch-card {
+    padding: 1.5rem;
+  }
+
+  .control-row,
+  .lap-row {
+    grid-template-columns: 1fr;
+  }
+
+  .control-button.wide {
+    grid-column: span 1;
+  }
+}
